@@ -1,13 +1,24 @@
 import React from 'react';
-import { MosaicWindow } from 'react-mosaic-component';
+import { MosaicWindow, MosaicContext } from 'react-mosaic-component';
 import { Classes, H5, Tab, Tabs } from '@blueprintjs/core';
+import Selector from './Selector';
 
 class Tile extends React.Component {
   render() {
+    if (!this.props.svt) return (
+      <MosaicWindow path={this.props.path} createNode={() => this.props.new} title='Select Servant'>
+        <MosaicContext.Consumer>
+          {value => <Selector
+            tree={this.props.selectorTree}
+            onSelect={id => value.mosaicActions.replaceWith(this.props.path, id)}
+          />}
+        </MosaicContext.Consumer>
+      </MosaicWindow>
+    );
+
     return (
       <MosaicWindow
-        path={this.props.path}
-        createNode={() => this.props.new}
+        path={this.props.path} createNode={() => this.props.new}
         title={`${this.props.svt.name} (#${this.props.svt.id})`}
       >
         <Tabs animate={true} id={`tabs-${this.props.svt.id}`} vertical={true}>

@@ -36,8 +36,22 @@ class App extends React.Component {
   }
 
   renderTile(id, path) {
+    const classGroups = {};
+    const tree = [];
+    for (const s of this.state.db.servants) {
+      if (!classGroups[s.className]) classGroups[s.className] = [];
+      classGroups[s.className].push({id: s.id, label: s.name});
+    }
+    for (const c in classGroups) tree.push({
+      id: c,
+      label: c,
+      childNodes: classGroups[c],
+      icon: 'folder-close'
+    });
+
     const svt = this.state.db.servants.find(s => s.id === id);
-    return (<Tile path={path} new='166' host={HOSTNAME} svt={svt}/>);
+
+    return (<Tile path={path} new='0' host={HOSTNAME} svt={svt} selectorTree={tree}/>);
   }
 
   render() {

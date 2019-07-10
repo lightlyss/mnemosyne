@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "react-scripts start",
-    "prebuild": "rm -rf build",
+    "prebuild": "rm -rf build docs",
     "build": "react-scripts build",
     "postbuild": "mv build docs",
     "test": "react-scripts test"
