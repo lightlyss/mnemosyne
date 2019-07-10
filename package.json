@@ -5,7 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "start": "react-scripts start",
+    "prebuild": "rm -rf build",
     "build": "react-scripts build",
+    "postbuild": "mv build docs",
     "test": "react-scripts test"
   },
   "repository": {
@@ -20,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/lightlyss/mnemosyne/issues"
   },
-  "homepage": "https://github.com/lightlyss/mnemosyne#readme",
+  "homepage": ".",
   "dependencies": {
     "@blueprintjs/core": "3.17.1",
     "@blueprintjs/icons": "3.9.1",
