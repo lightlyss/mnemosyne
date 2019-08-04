@@ -9,6 +9,10 @@ div, img {
   max-height: 100%;
 }
 
+.bp3-popover-content {
+  max-height: initial;
+}
+
 ul {
   list-style-type: "\2600";
 }

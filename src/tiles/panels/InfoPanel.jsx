@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider } from '@blueprintjs/core';
+import { Divider, Tooltip, Position } from '@blueprintjs/core';
 import Selector from './Selector';
 
 export class ArtPanel extends React.Component {
@@ -56,7 +56,12 @@ export class StatusPanel extends React.Component {
       <p className='mn-row-text'>{svt.atks[1]} ATK</p>
       <div className='mn-row'>{this.state.cards}</div>
       <Divider/>
-      <p className='mn-row-text'>Noble Phantasm: {svt.np}</p>
+      <div className='mn-row-text'>
+        <Tooltip position={Position.BOTTOM} content={svt.npDetails.effects.map(npe => <p>{npe}</p>)}>
+          {svt.npDetails.name}
+        </Tooltip>
+      </div>
+      <p className='mn-row-text'><i>{svt.npDetails.alias}</i></p>
       <div className='mn-row'>{this.state.npCard}</div>
       <Divider/>
     </div>);
@@ -64,12 +69,24 @@ export class StatusPanel extends React.Component {
 }
 
 export const SkillPanel = props => <Selector
-  tree={props.svt.actives.map(a => ({id: a, label: a}))}
+  tree={props.svt.activeDetails.map(ad => ({
+    id: ad.id,
+    label: <Tooltip
+      position={Position.BOTTOM}
+      content={ad.effects.map(ade => <p>{ade}</p>)}
+    >{ad.id}</Tooltip>
+  }))}
   onSelect={() => null}
 />;
 
 export const PassivePanel = props => <Selector
-  tree={props.svt.passives.map(p => ({id: p, label: p}))}
+  tree={props.svt.passiveDetails.map(pd => ({
+    id: pd.id,
+    label: <Tooltip
+      position={Position.BOTTOM}
+      content={pd.effects.map(pde => <p>{pde}</p>)}
+    >{pd.id}</Tooltip>
+  }))}
   onSelect={() => null}
 />;
 
