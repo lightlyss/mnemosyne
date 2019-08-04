@@ -1,4 +1,5 @@
 # Mnemosyne
+![banner](banner.png)
 > The Autonomous Observation-Type Proof-of-Existence SYSTEM-MNEMOSYNE was a
 > subsystem designed by Chaldea, for use in independently and automatically
 > ensuring confirmation of a Master's existence in the circumstance that

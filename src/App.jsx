@@ -37,9 +37,12 @@ class App extends React.Component {
   }
 
   renderTile(id, path) {
-    const { servants } = this.state.db;
+    const { servants, actives, passives, nps } = this.state.db;
     let svt = servants.find(s => s.id === id);
     if (!svt) return <SearchTile path={path} new='0' servants={servants}/>;
+    svt.activeDetails = actives.filter(ad => svt.actives.includes(ad.id));
+    svt.passiveDetails = passives.filter(pd => svt.passives.includes(pd.id));
+    svt.npDetails = nps.find(np => np.id === `${svt.id}u`) || nps.find(np => np.id === svt.id);
     return <Tile path={path} new='0' host={HOSTNAME} svt={svt}/>;
   }
 
