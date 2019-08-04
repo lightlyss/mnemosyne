@@ -11,6 +11,8 @@ div, img {
 
 .bp3-popover-content {
   max-height: initial;
+  max-width: 350px;
+  word-wrap: normal;
 }
 
 ul {
