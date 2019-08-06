@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/lightlyss/mnemosyne.svg?branch=master)](https://travis-ci.org/lightlyss/mnemosyne)
 # Mnemosyne
 ![banner](banner.png)
 > The Autonomous Observation-Type Proof-of-Existence SYSTEM-MNEMOSYNE was a
